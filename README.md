@@ -1,21 +1,14 @@
 # Jekyll-EWP
 A jekyll plugin to generate and encrypt paypal buttons on the fly.
 
-*NOTE:* This plugin is **NOT** compatible with github-pages
+*NOTE:* This plugin is **NOT** compatible with github-pages and requires a paypal business or sandbox account
 
 
 
 ## How To Use
-1. Download or clone the repository
-2. Copy the `jekyllEWP.rb` file into the `_plugins` folder on your jekyll site
-3. Add the following options to your `_config.yml`:
-```
-paypal_cert_id:
-paypal_email_address:
-paypal_sandbox_mode:
-```
-4. Make sure you have `name` and `price` values set in the frontmatter of the page where these buttons will appear
-5. Add the tag to your page (see below)
+See the [setup](https://github.com/MoralCode/Jekyll-EWP/wiki/Setup) page on the wiki for full setup and configuration instructions.
+
+
 
 ## Basic Usage Examples
 
