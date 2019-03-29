@@ -40,12 +40,12 @@ def getButtonEncryptionValue(data, privateKeyData, certData, payPalCertData, key
     #get keys and certs
 
     #https://stackoverflow.com/a/11136771
-    paypal_pub_cert = OpenSSL::X509::Certificate.new(payPalCertData)
+    paypal_pub_cert = OpenSSL::X509::Certificate.new(payPalCertData.gsub('\n', "\n"))
 
-    my_pub_cert = OpenSSL::X509::Certificate.new(certData)
+    my_pub_cert = OpenSSL::X509::Certificate.new(certData.gsub('\n', "\n"))
 
     #https://stackoverflow.com/a/862090S
-    my_private_key = OpenSSL::PKey::RSA.new(privateKeyData, keyPass)
+    my_private_key = OpenSSL::PKey::RSA.new(privateKeyData.gsub('\n', "\n"), keyPass)
 
        
 
