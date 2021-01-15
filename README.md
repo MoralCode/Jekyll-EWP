@@ -53,3 +53,10 @@ donate
 
 
 More information on the Tag Syntax can be found on the [wiki](https://github.com/MoralCode/Jekyll-EWP/wiki).
+
+
+## Docs
+
+I guess rubydoc also automatically compiles inline docs for you. neat.
+
+https://www.rubydoc.info/gems/JekyllEWP
