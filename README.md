@@ -1,5 +1,5 @@
 # Jekyll-EWP
-A jekyll plugin to generate and encrypt paypal buttons on the fly.
+A jekyll plugin to generate [Paypal Encrypted Web payment](https://developer.paypal.com/docs/paypal-payments-standard/integration-guide/encryptedwebpayments/#id08A3I0QC0X4) buttons on the fly.
 
 *NOTE:* This plugin is **NOT** compatible with github-pages and requires a paypal business or sandbox account
 
