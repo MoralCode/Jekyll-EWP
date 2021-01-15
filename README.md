@@ -60,3 +60,8 @@ More information on the Tag Syntax can be found on the [wiki](https://github.com
 I guess rubydoc also automatically compiles inline docs for you. neat.
 
 https://www.rubydoc.info/gems/JekyllEWP
+
+
+## Credits
+
+Logo inspired by https://commons.wikimedia.org/w/index.php?curid=73872716 and the Jekyll logo
