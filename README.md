@@ -1,4 +1,7 @@
 # Jekyll-EWP
+
+[![Gem Version](https://badge.fury.io/rb/JekyllEWP.svg)](https://badge.fury.io/rb/JekyllEWP)
+
 A jekyll plugin to generate [Paypal Encrypted Web payment](https://developer.paypal.com/docs/paypal-payments-standard/integration-guide/encryptedwebpayments/#id08A3I0QC0X4) buttons on the fly.
 
 *NOTE:* This plugin is **NOT compatible with GitHub Pages** and requires a PayPal business or sandbox account in order to generate or download the appropriate certificates to make this plugin work.
