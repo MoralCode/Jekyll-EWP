@@ -1,0 +1,2 @@
+#!/bin/bash
+EWP_PRIVKEY="-----BEGIN RSA PRIVATE KEY-----\n...\n-----END RSA PRIVATE KEY-----\n" EWP_PUBCERT="-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n" EWP_PAYPAL_PUBCERT="-----BEGIN CERTIFICATE-----\n...\n-----END CERTIFICATE-----\n" EWP_PRIVKEY_PASS="your password here" jekyll serve
