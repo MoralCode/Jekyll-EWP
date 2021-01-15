@@ -1,7 +1,13 @@
 require 'openssl'
 require 'base64' 
 
-
+# returns a string consisting of the provided encrypted value wrapped in the paypal HTML <form> tags
+# Params:
+# +encryptedValue+:: the encrypted value to wrap (as a string)
+# +use_sandbox+:: boolean representing whether or not to use paypal's sandbox domain
+# +separate_submit+:: boolean representing whether or not to exclude the submit element
+# +button_image+:: an image URL to use for the button instead of the default paypal one
+# +identifier+:: an id attribute value to pass to the form so that it can be referenced by an submit button elsewhere on the page. only used when separate_submit = true
 def wrapInForm(encryptedValue, use_sandbox=false, separate_submit=false, button_image = "", identifier="")
 
     if identifier.nil?
@@ -33,8 +39,13 @@ def wrapInForm(encryptedValue, use_sandbox=false, separate_submit=false, button_
 
 end
 
-
- 
+# Encrypts and signs the paypal form data for inclusion on the page
+# Params:
+# +data+:: the data to encrypt
+# +privateKeyData+:: your private key as a string
+# +certData+:: your public key/certificate as a string
+# +payPalCertData+:: Paypal's public key as a string
+# +keyPass+:: the password (if applicable) for the key specified by privateKeyData
 def getButtonEncryptionValue(data, privateKeyData, certData, payPalCertData, keyPass = nil)
     #puts data
     #get keys and certs
@@ -67,6 +78,17 @@ def getButtonEncryptionValue(data, privateKeyData, certData, payPalCertData, key
 end
 
 
+# creates a string of options for one particular item
+# Params:
+# +certID+:: the paypal certificate ID
+# +cmd+:: the paypal certificate ID
+# +paypal_business_email+:: the email of the paypal business account to send the money to
+# +item_name+:: the name of the item being sold
+# +item_price+:: the price of the item being sold
+# +item_number+:: the item number of the item being sold
+# +currency_code+:: the currency code for the currency that the item is being sold for
+# +tax+:: the amount to charge in tax
+# +shipping+:: the amount to charge for shipping
 def getButtonOptionsString(certID, cmd, paypal_business_email, item_name, item_price, item_number = "0000", currency_code = "USD", tax = nil, shipping = nil )
     options = ""
 
@@ -130,10 +152,11 @@ some of these are also passthrough variables that arent used by paypal: https://
 end
 
 #determines the button command from the string input.
-#possible commands listed at https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/formbasics/#specifying-button-type--cmd
-
+# Params:
+# +purpose+:: a string representing the purpose of the button i.e. "addtocart" see https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/formbasics/#specifying-button-type--cmd for possible values
 def getButtonCmd(purpose)
      
+    #possible commands listed at https://developer.paypal.com/docs/classic/paypal-payments-standard/integration-guide/formbasics/#specifying-button-type--cmd
     case purpose
     when "addtocart"
         return "_cart\nadd=1" #this is a dirty hack to insert the correct parameter for the cart buttons. better solutions welcome
