@@ -35,7 +35,7 @@ end
 
 
  
-def getButtonEncryptionValue(data, privateKeyData, certData, payPalCertData, keyPass)
+def getButtonEncryptionValue(data, privateKeyData, certData, payPalCertData, keyPass = nil)
     #puts data
     #get keys and certs
 
@@ -44,14 +44,20 @@ def getButtonEncryptionValue(data, privateKeyData, certData, payPalCertData, key
 
     my_pub_cert = OpenSSL::X509::Certificate.new(certData.gsub('\n', "\n"))
 
-    #https://stackoverflow.com/a/862090S
-    my_private_key = OpenSSL::PKey::RSA.new(privateKeyData.gsub('\n', "\n"), keyPass)
-
+    my_private_key = ''
+    if keyPass
+        #https://stackoverflow.com/a/862090S
+        #https://docs.ruby-lang.org/en/2.1.0/OpenSSL/PKey/RSA.html#method-c-new
+        my_private_key = OpenSSL::PKey::RSA.new(privateKeyData.gsub('\n', "\n"), keyPass)
+    else
+        my_private_key = OpenSSL::PKey::RSA.new(privateKeyData.gsub('\n', "\n")) 
+    end
        
 
 
     #modified from http://railscasts.com/episodes/143-paypal-security
-    signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(my_pub_cert), OpenSSL::PKey::RSA.new(my_private_key, keyPass), data, [], OpenSSL::PKCS7::BINARY)
+    #https://docs.ruby-lang.org/en/2.1.0/OpenSSL/PKCS7.html#method-c-sign
+    signed = OpenSSL::PKCS7::sign(OpenSSL::X509::Certificate.new(my_pub_cert), my_private_key, data, [], OpenSSL::PKCS7::BINARY)
     
     OpenSSL::PKCS7::encrypt([OpenSSL::X509::Certificate.new(paypal_pub_cert)], signed.to_der, OpenSSL::Cipher.new("des-ede3-cbc"), OpenSSL::PKCS7::BINARY).to_s.gsub("\n", "")
 
