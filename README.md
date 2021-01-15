@@ -3,6 +3,11 @@ A jekyll plugin to generate and encrypt paypal buttons on the fly.
 
 *NOTE:* This plugin is **NOT** compatible with github-pages and requires a paypal business or sandbox account
 
+## Installation
+
+JekyllEWP is now available as a [Ruby Gem](https://rubygems.org/gems/JekyllEWP)!
+
+You can either run `gem install JekyllEWP` to install or add `gem 'JekyllEWP', '~> 1.0', '>= 1.0.1'` to your `Gemfile`
 
 
 ## How To Use
