@@ -1,0 +1,13 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    JekyllEWP (1.0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  JekyllEWP (~> 1.0)
+
+BUNDLED WITH
+   2.2.0.rc.2

@@ -1,1 +1,0 @@
-../../jekyllEWP.rb
