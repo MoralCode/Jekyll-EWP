@@ -1,5 +1,5 @@
 Gem::Specification.new do |s|
-  s.name        = 'jekyllewp'
+  s.name        = 'jekyll-ewp'
   s.version     = '1.0.1'
   s.date        = '2020-01-14'
   s.summary     = "A Jekyll plugin to generate and encrypt PayPal buttons on the fly."
